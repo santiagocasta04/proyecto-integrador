@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Layout from "./layout/Layout";
 import WelcomeSection from './pages/home/WelcomeSection';
 
+
 function App() {
   return (
     <Layout>
