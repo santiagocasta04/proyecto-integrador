@@ -1,12 +1,13 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
+import logo from "../../assets/LiverLab3dLogo.png"; // Importa la imagen del logo desde la carpeta de assets
 
 const Header = () => {
   return (
     <header>
       <a href="#" className="header-content">
-        <img src="Logo1.0.png" alt="logo company" />
-        <h2 className="logo-name">LiverLab 3D</h2>
+      <Link to="/" className="nav-link"><img src={logo} alt="logo company" /></Link>
+        <Link to="/" className="nav-link"><h2 className="logo-name">LiverLab 3D</h2></Link>
       </a>
       <nav>
         <Link to="/" className="nav-link">Inicio</Link>
