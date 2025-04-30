@@ -1,10 +1,12 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Link } from "react-router-dom";
+import "./Diseases.css";
 
-function Model({ path }) {
+function Model({ path, scale }) {
   const { scene } = useGLTF(path);
-  return <primitive object={scene} scale={1.5} />;
+  return <primitive object={scene} scale={scale} />;
 }
 
 export default function Diseases() {
@@ -17,25 +19,31 @@ export default function Diseases() {
           <Canvas style={{ width: '300px', height: '300px' }}>
             <ambientLight />
             <OrbitControls />
-            <Model path="/models/liver-cancer.glb" />
+            <Model path="/models/LiverFatty1.glb" scale={8.3}/>
           </Canvas>
           <h3>Hígado Graso</h3>
+          <br />
+          <Link to="/higadograso" className="nav-link"><button>Explorar</button></Link>
         </div>
         <div style={{ textAlign: 'center' }}>
           <Canvas style={{ width: '300px', height: '300px' }}>
             <ambientLight />
             <OrbitControls />
-            <Model path="/models/tired-person.glb" />
+            <Model path="/models/liver-cancer.glb" scale={24}/>
+          </Canvas>
+          <h3> Cirrosis Hepática</h3>
+          <br />
+          <Link to="/cirrosishepatica" className="nav-link"><button>Explorar</button></Link>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Canvas style={{ width: '300px', height: '300px' }}>
+            <ambientLight />
+            <OrbitControls />
+            <Model path="/models/tired-person.glb" scale={2.7}/>
           </Canvas>
           <h3>Enfermedad Hepatitis Alcohólica (EHA)</h3>
-        </div>
-        <div style={{ textAlign: 'center' }}>
-          <Canvas style={{ width: '300px', height: '300px' }}>
-            <ambientLight />
-            <OrbitControls />
-            <Model path="/models/tired-person.glb" />
-          </Canvas>
-          <h3>Cirrosis Hepática</h3>
+          <br />
+          <Link to="/hepatitis-alcohólica" className="nav-link"><button>Explorar</button></Link>
         </div>
       </div>
     </div>
