@@ -5,7 +5,7 @@ import "./fattyLiver.css";
 
 // Modelo 3D cargado y rotando
 function EhaModel() {
-  const { scene } = useGLTF("/models/tired-person.glb");
+  const { scene } = useGLTF("/models/liver_drunk.glb");
   const modelRef = useRef();
 
   // Rotación continua

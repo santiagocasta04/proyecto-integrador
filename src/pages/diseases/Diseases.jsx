@@ -39,7 +39,7 @@ export default function Diseases() {
           <Canvas style={{ width: '300px', height: '300px' }}>
             <ambientLight />
             <OrbitControls />
-            <Model path="/models/tired-person.glb" scale={2.7}/>
+            <Model path="/models/liver_drunk.glb" scale={2.7}/>
           </Canvas>
           <h3>Enfermedad Hepatitis Alcohólica (EHA)</h3>
           <br />
