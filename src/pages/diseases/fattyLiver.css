@@ -7,6 +7,7 @@ seccion-principal {
   max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
+  height: 100vh; /* Toda la altura visible del navegador */
 }
 
 /* Contenedor común para ambos artículos */
@@ -56,6 +57,11 @@ seccion-principal {
   flex: 1;
   min-width: 300px;
   text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+  
 }
 
 .modelo h1 {
@@ -65,9 +71,12 @@ seccion-principal {
 
 .model-viewer {
   width: 100%;
-  height: 400px;
+  height: 600px;
   border-radius: 8px;
   background-color: #FFE1EA;
+  max-width: 1000px; /* Opcional: más ancho */
+  margin: 0 auto; /* Centrado */
+  
 }
 
 .texto-contenedor {
