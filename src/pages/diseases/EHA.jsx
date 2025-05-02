@@ -1,7 +1,7 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import "./fattyLiver.css";
+import "./EHA.css";
 
 // Modelo 3D cargado y rotando
 function EhaModel() {

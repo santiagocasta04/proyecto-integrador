@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import "./fattyLiver.css";
 import { div } from "three/tsl";
+import { Mesh } from "three"; 
 
 // Modelo 3D cargado y rotando
 function LiverFattyModel() {
@@ -14,9 +15,28 @@ function LiverFattyModel() {
       modelRef.current.rotation.y += 0.005;
     }
   });
+  React.useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = false; // opcional
+      }
+    });
+  }, [scene])
 
-  return <primitive ref={modelRef} object={scene} scale={9.5} position={[0, 0, 0]} />;
+  return <primitive ref={modelRef} object={scene} scale={10.3} position={[0, 0, 0]} />;
 }
+const Recipent = () =>{
+  return (
+    <mesh 
+    rotation-x={-Math.PI / 2} 
+    receiveShadow={true}
+    position={[0, -2, 0]}>
+      <circleGeometry args={[7, 70]} />
+      <meshStandardMaterial roughness={0.8} metalness={1} />
+    </mesh>
+  );
+};
 
 export default function FattyLiverSection() {
   const [mostrarArticulo, setMostrarArticulo] = useState(false);
@@ -80,9 +100,17 @@ export default function FattyLiverSection() {
       <div className="modelo">
         <h1>Hígado Graso</h1>
         <div className="model-viewer">
-          <Canvas camera={{ position: [0, 0, 5] }}>
+          <Canvas camera={{ position: [0, 0, 6]}} shadows={true}>
             <ambientLight intensity={0.5} />
-            <directionalLight position={[0, 5, 5]} />
+            <directionalLight 
+            color={"yellow"} 
+            position={[0, 5, 5]} 
+            intensity={0.9} 
+            castShadow={true}
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+            shadow-radius={4}/>
+           <Recipent />
             <Suspense fallback={null}>
               <LiverFattyModel />
               <OrbitControls enableZoom={false} />
