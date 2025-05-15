@@ -12,7 +12,7 @@ function TiredPersonModel() {
   // Rotación continua
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.005; // Velocidad de rotación (ajustable)
+      modelRef.current.rotation.y += 0.005; 
     }
   });
 
@@ -21,7 +21,7 @@ function TiredPersonModel() {
 
 export default function WelcomeSection() {
   return (
-    <div className="welcome-container">
+    <div className="welcome-container" style={{ height: "100vh" , width: "100vw"}}>
  <h1>Liver lab 3d</h1>
  <br></br>
  <p>Explora el bienestar de tu higado de nuevas maneras. Nuestra aplicación te guía hacia un recorrido por tu higado.<p>
@@ -40,7 +40,7 @@ export default function WelcomeSection() {
       <p>A continuacion, veras algunas enfermedades que pueden afectar a tu higado.<p>
       </p>Pero no te preocupes, con el cuidado y tratamiento necesario tendras un higado sano y feliz</p>
       <br></br>
-      <Link to="/enfermedades" className="nav-link"><button onClick={() => alert("¡Vamos allá!")}>Explorar</button></Link>
+      <Link to="/enfermedades" className="nav-link"><button>Explorar</button></Link>
     </div>
   );
 }

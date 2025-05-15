@@ -1,7 +1,14 @@
  .footer {
     background-color: #5A2634; 
     padding: 16px;
+    width: 100%;
+    margin-top: auto;
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
   
