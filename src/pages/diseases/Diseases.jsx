@@ -3,11 +3,15 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Link } from "react-router-dom";
 import "./Diseases.css";
+import Staging from '../home/staging/Staging';
 
 function Model({ path, scale }) {
   const { scene } = useGLTF(path);
   return <primitive object={scene} scale={scale} />;
+  
 }
+
+
 
 export default function Diseases() {
   return (
