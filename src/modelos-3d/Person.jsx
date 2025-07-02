@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 export default function Person(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/tired-person-1.glb')
   const { actions } = useAnimations(animations, group)
+  const [currentAction, setCurrentAction] = useState("Standing")
 
-  const [currentAction, setCurrentAction] = useState("Standing") 
 
+ 
 
   useEffect(() => {
     const action = actions[currentAction]
