@@ -14,10 +14,10 @@ import { Routes, Route } from "react-router-dom";
 const Layout = () => {
   return (
     <div className="layout-container">
-      {/* Header */}
+  
       <Header />
 
-      {/* Main Content */}
+
       <main className="main-content">
         <Routes>
           <Route path="/" element={<WelcomeSection />} />
@@ -29,8 +29,7 @@ const Layout = () => {
           <Route path="/hepatitis-alcohólica" element={<EhaSection/>} />
         </Routes>
       </main>
-
-      {/* Footer */}
+        
       <Footer />
     </div>
   );

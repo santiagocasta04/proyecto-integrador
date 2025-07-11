@@ -14,13 +14,15 @@
     padding: 10px 20px;
     font-size: 1rem;
     background-color: #5A2634;
-    color: white;
+  
+    color: #ffe1ea;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #005fa3;
+    background-color: #da7f99;
   }
+  
   

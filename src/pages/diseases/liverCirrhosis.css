@@ -1,45 +1,169 @@
-  
-  .model-viewer {
-    width: 100%;
-    height: 400px;
-    margin: 2rem 0;
-  }
+.seccion-principal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #ffe0e6;
+}
 
-  .text{
-    max-width: 600px;
-    padding: 1rem;
-    font-family: Georgia, serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
-    text-align: left;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.texto-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
 
-  }
-  .seccion-principal {
-    display: flex;
-    justify-content: space-between; /* o flex-start si no quieres separación */
-    align-items: flex-start;
-    padding: 2rem;
-    gap: 2rem; /* espacio entre bloques */
-  }
-  
-  .articulo {
-    max-width: 600px;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: Georgia, serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  
-  .modelo {
-    flex-grow: 1; /* ocupa el espacio restante */
-    height: 400px; /* o lo que necesites */
-    background-color: #eee; /* solo para mostrar el espacio */
-    font-family: Georgia, serif;
-  }
+.articulo,
+.articulo1,
+.articulo2 {
+  width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(2, 2, 66, 0.1);
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+/* Título clicable */
+.articulo h1,
+.articulo1 h1,
+.articulo2 h1 {
+  margin: 0;
+  background: #f4f4f4;
+  padding: 1.2rem;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #5A2634;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.articulo h1:hover,
+.articulo1 h1:hover,
+.articulo2 h1:hover {
+  background: #e2e2e2;
+}
+
+/* Contenedor expandible */
+.expandible-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out, padding 0.4s ease-in-out;
+  width: 100%;
+}
+
+.expandible-container.activo {
+  max-height: 4000px; /* suficientemente grande */
+  padding-top: 1rem;
+}
+
+/* Texto contenido */
+.text {
+  width: 100%;
+  padding: 1.5rem;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+/* Modelo 3D centrado */
+.model-viewer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+/* Estilo del título en el canvas (si aplica) */
+.title-liverCirrhosis {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+/* Modelo adicional */
+.modelo {
+  width: 100%;
+  height: 500px;
+  background-color: transparent;
+}
+
+
+.toggle-title {
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  border-bottom: 2px solid #ccc;
+  transition: background 0.2s ease;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.toggle-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.toggle-title {
+  font-family: "Segoe UI", "Roboto", "Helvetica", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  border-bottom: 2px solid #ccc;
+  background-color: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.toggle-title:hover {
+  background-color: #f2f2f2;
+  color: #222;
+}
+
+.icon-container {
+  margin-left: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+

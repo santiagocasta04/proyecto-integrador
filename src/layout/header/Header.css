@@ -29,9 +29,9 @@ a{
 nav a{
     font-weight: 600;
     padding-right: 10px;
-    font-size: 20px;
+    font-size: 20px;;
 }
 
 nav a:hover{
-    color: black;
+    color: #ffe1ea;
 }
