@@ -8,6 +8,7 @@ const Title = ({title}) => {
      position={[0, 3, 0]}
      distanceFactor={5}
      wrapperClass="title"
+     transform = {true}
      >
         <h1>{title}</h1>
      </Html>

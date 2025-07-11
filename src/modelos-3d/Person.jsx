@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useGLTF, useAnimations, useKeyboardControls } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+
 
 export default function Person(props) {
   const group = useRef()
@@ -9,7 +10,9 @@ export default function Person(props) {
   const [currentAction, setCurrentAction] = useState("Standing")
 
 
- 
+
+  
+
 
   useEffect(() => {
     const action = actions[currentAction]

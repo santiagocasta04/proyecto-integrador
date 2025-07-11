@@ -24,8 +24,8 @@ export default function WelcomeSection() {
     <div className="welcome-container" style={{ height: "100vh" , width: "100vw"}}>
  <h1>Liver lab 3d</h1>
  <br></br>
- <p>Explora el bienestar de tu higado de nuevas maneras. Nuestra aplicación te guía hacia un recorrido por tu higado.<p>
- </p>Diviertete aprendiendo y no permitas que tu higado se destruya como el que veras a continuacion.</p>
+ <p>Explora el bienestar de tu higado de nuevas maneras. Nuestra aplicación te guía hacia un recorrido por tu higado<p>
+ </p>Diviertete aprendiendo y no permitas que tu higado se destruya como el que veras a continuacion</p>
  
       <div className="model-viewer" >
         <Canvas camera={{ position: [0, 0, 5] }}>
@@ -37,7 +37,7 @@ export default function WelcomeSection() {
           </Suspense>
         </Canvas>
       </div>
-      <p>A continuacion, veras algunas enfermedades que pueden afectar a tu higado.<p>
+      <p>A continuacion, veras algunas enfermedades que pueden afectar a tu higado<p>
       </p>Pero no te preocupes, con el cuidado y tratamiento necesario tendras un higado sano y feliz</p>
       <br></br>
       <Link to="/enfermedades" className="nav-link"><button>Explorar</button></Link>

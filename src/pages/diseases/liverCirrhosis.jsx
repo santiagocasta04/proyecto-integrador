@@ -2,7 +2,6 @@ import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   OrbitControls,
-  SoftShadows,
   useGLTF,
   PerspectiveCamera,
 } from "@react-three/drei";
@@ -10,6 +9,7 @@ import "./liverCirrhosis.css";
 import Title from "../texts/Title";
 import Staging from "../home/staging/Staging";
 import Person from "../../modelos-3d/Person";
+import Staging2 from "../home/staging/Staging2";
 
 function LiverCirrhosisModel() {
   const { scene } = useGLTF("/models/liver-cancer.glb");
@@ -51,7 +51,16 @@ export default function LiverCirrhosisSection() {
       <div className="texto-contenedor">
         {/* ¿Qué es? */}
         <div className={`articulo ${mostrarArticulo ? "expandido" : ""}`}>
-          <h1 onClick={toggleArticulo}>¿Qué es?</h1>
+          <h1 className="toggle-title" onClick={toggleArticulo}>
+            ¿Qué es?
+            <span className="icon-container">
+              <img
+                src={mostrarArticulo ? "/icons/arrow-up.png" : "/icons/arrow-down.png"}
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
+          </h1>
           <div className={`expandible-container ${mostrarArticulo ? "activo" : ""}`}>
             <article>
               <p className="text">
@@ -63,15 +72,7 @@ export default function LiverCirrhosisSection() {
             </article>
             <div className="model-viewer">
               <Canvas shadows camera={{ position: [0, 0, 5] }} style={{ background: "transparent" }}>
-                <SoftShadows size={20} samples={4} focus={4} />
-                <spotLight
-                  position={[4, 4, 2]}
-                  color={"yellow"}
-                  angle={Math.PI / 14}
-                  penumbra={1}
-                  distance={25}
-                  intensity={1000}
-                />
+                <spotLight position={[4, 4, 2]} color={"yellow"} angle={Math.PI / 14} penumbra={1} distance={25} intensity={1000} />
                 <ambientLight intensity={0.5} />
                 <directionalLight
                   color="white"
@@ -98,7 +99,16 @@ export default function LiverCirrhosisSection() {
 
         {/* Causas */}
         <div className={`articulo1 ${mostrarCausas ? "expandido" : ""}`}>
-          <h1 onClick={toggleCausas}>Causas</h1>
+          <h1 className="toggle-title" onClick={toggleCausas}>
+            Causas
+            <span className="icon-container">
+              <img
+                src={mostrarCausas ? "/icons/arrow-up.png" : "/icons/arrow-down.png"}
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
+          </h1>
           <div className={`expandible-container ${mostrarCausas ? "activo" : ""}`}>
             <article>
               <p className="text">
@@ -106,12 +116,46 @@ export default function LiverCirrhosisSection() {
                 siendo el consumo excesivo de alcohol y la hepatitis viral crónica las más frecuentes...
               </p>
             </article>
+            <div className="model-viewer">
+              <Canvas shadows style={{ background: "transparent" }}>
+                <PerspectiveCamera makeDefault fov={80} position={[0, 1, 3]} />
+                <ambientLight intensity={0.5} />
+                <directionalLight
+                  color="white"
+                  position={[5, 10, 5]}
+                  intensity={2}
+                  castShadow
+                  shadow-mapSize-width={1024}
+                  shadow-mapSize-height={1024}
+                />
+                <Staging2 />
+                <Title title="Haz click para bostezar" />
+                <Suspense fallback={null}>
+                  <Person />
+                </Suspense>
+                <OrbitControls enableZoom={false} enableRotate={false} maxDistance={5} />
+                <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow castShadow position={[0, 0, 0]}>
+                  <circleGeometry args={[4, 16]} />
+                  <shadowMaterial opacity={0.3} />
+                  <meshStandardMaterial roughness={1} metalness={0.5} color="#5A2634" />
+                </mesh>
+              </Canvas>
+            </div>
           </div>
         </div>
 
         {/* Efectos */}
         <div className={`articulo2 ${mostrarEfectos ? "expandido" : ""}`}>
-          <h1 onClick={toggleEfectos}>Efectos</h1>
+          <h1 className="toggle-title" onClick={toggleEfectos}>
+            Efectos
+            <span className="icon-container">
+              <img
+                src={mostrarEfectos ? "/icons/arrow-up.png" : "/icons/arrow-down.png"}
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
+          </h1>
           <div className={`expandible-container ${mostrarEfectos ? "activo" : ""}`}>
             <article>
               <p className="text">
@@ -121,7 +165,7 @@ export default function LiverCirrhosisSection() {
             </article>
             <div className="model-viewer">
               <Canvas shadows style={{ background: "transparent" }}>
-                <PerspectiveCamera makeDefault fov={70} position={[0, 1, 3]} />
+                <PerspectiveCamera makeDefault fov={80} position={[0, 1, 3]} />
                 <ambientLight intensity={0.5} />
                 <directionalLight
                   color="white"
@@ -132,6 +176,7 @@ export default function LiverCirrhosisSection() {
                   shadow-mapSize-height={1024}
                 />
                 <Staging />
+                <Title title="Haz click para bostezar" />
                 <Suspense fallback={null}>
                   <Person />
                 </Suspense>
@@ -139,7 +184,7 @@ export default function LiverCirrhosisSection() {
                 <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow castShadow position={[0, 0, 0]}>
                   <circleGeometry args={[4, 16]} />
                   <shadowMaterial opacity={0.3} />
-                  <meshStandardMaterial roughness={0.8} metalness={0.5} color="#5A2634" />
+                  <meshStandardMaterial roughness={1} metalness={0.5} color="#5A2634" />
                 </mesh>
               </Canvas>
             </div>
