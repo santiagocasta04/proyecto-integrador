@@ -1,0 +1,34 @@
+/* Fattytitle.css */
+
+.title-wrapper {
+  /* asegúrate de que preserve el contexto 3D */
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+
+.fatty-title {
+  color: cyan;                       /* texto en cyan */
+  font-size: 4rem;
+  font-family: 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  /* sombras de neón para reforzar el cyan */
+  text-shadow:
+    0 0 5px rgba(0, 255, 255, 0.8),
+    0 0 10px rgba(0, 255, 255, 0.6),
+    0 0 20px rgba(0, 255, 255, 0.4);
+
+  /* rotación 3D ligera y transición suave */
+  transform: rotateX(15deg) rotateY(-15deg);
+  transition: transform 0.6s ease, text-shadow 0.6s ease;
+}
+
+/* Al pasar el ratón, centrar la pieza y realzar la luz */
+.title-wrapper:hover .fatty-title {
+  transform: rotateX(0deg) rotateY(0deg);
+  text-shadow:
+    0 0 8px rgba(0, 255, 255, 1),
+    0 0 16px rgba(0, 255, 255, 0.8),
+    0 0 32px rgba(0, 255, 255, 0.6);
+}
