@@ -58,7 +58,20 @@ export default function FattyLiverSection() {
     <div className="seccion-principal">
       <div className="texto-contenedor">
       <div className={`articulo ${mostrarArticulo ? "expandido" : ""}`}>
-        <h1 onClick={toggleArticulo}>¿Qué es?</h1>
+        <h1 onClick={toggleArticulo}>
+          ¿Qué es?
+          <span className="icon-container">
+              <img
+                src={
+                  mostrarArticulo
+                    ? "/icons/arrow-up.png"
+                    : "/icons/arrow-down.png"
+                }
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
+          </h1>
         <div className={`expandible-container ${mostrarArticulo ? "activo" : ""}`}>
           <article>
             <p className="text">
@@ -97,7 +110,7 @@ export default function FattyLiverSection() {
               <LiverFattyModel />
               <OrbitControls enableZoom={false} />
             </Suspense>
-            <FattyTitle title="Higado graso" />
+            <FattyTitle title="Higado graso"/>
           </Canvas>
           </div>
         </div>
@@ -106,6 +119,17 @@ export default function FattyLiverSection() {
       <div className={`articulo1 ${mostrarCausas ? "expandido" : ""}`}>
         <h1 onClick={toggleCausas}>
           Causas
+          <span className="icon-container">
+              <img
+                src={
+                  mostrarCausas
+                    ? "/icons/arrow-up.png"
+                    : "/icons/arrow-down.png"
+                }
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
         </h1>
         <div className={`expandible-container ${mostrarCausas ? "activo" : ""}`}>
           <article>
@@ -147,7 +171,20 @@ export default function FattyLiverSection() {
       </div>
 
       <div className={`articulo2 ${mostrarEfectos ? "expandido" : ""}`}>
-        <h1 onClick={toggleEfectos  }>Efectos</h1>
+        <h1 onClick={toggleEfectos  }>
+          Efectos
+          <span className="icon-container">
+              <img
+                src={
+                  mostrarEfectos
+                    ? "/icons/arrow-up.png"
+                    : "/icons/arrow-down.png"
+                }
+                alt="Toggle"
+                className="toggle-icon"
+              />
+            </span>
+        </h1>
         <div className={`expandible-container ${mostrarEfectos ? "activo" : ""}`}>       
           <article>
             <p>
