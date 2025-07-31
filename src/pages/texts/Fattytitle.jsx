@@ -3,7 +3,7 @@ import { Html, Center, Text3D } from "@react-three/drei"
 import './Fattytitle.css'
 
 const FattyTitle = ({ title, mode = "text3d", htmlSize = 40, position = [0, 3, 0] }) => {
-  if (mode === "html") {
+  if (mode === "html1") {
     return (
       <Html
         center
@@ -17,7 +17,7 @@ const FattyTitle = ({ title, mode = "text3d", htmlSize = 40, position = [0, 3, 0
     )
   }
 
-  // 3D Text mode (reducido)
+ if (mode === "text3d") {
   return (
     <Center position={position}>
       <Text3D
@@ -40,15 +40,29 @@ const FattyTitle = ({ title, mode = "text3d", htmlSize = 40, position = [0, 3, 0
         {title}
         <meshStandardMaterial
           attach="material"
-          color="#00ffff"
+          color="#043939ff"
           metalness={0.5}
           roughness={0.1}
-          emissive="#00aaff"
+          emissive="#00080bff"
           emissiveIntensity={0.6}
         />
       </Text3D>
     </Center>
-  )
+  );
 }
+
+return (
+    <Text
+      position={[0, 1.8, 0]}
+      color={"#5A2634"}
+      anchorX={"center"}
+      anchorY={"middle"}
+      fontSize={fontSize}
+      font="/fonts/Inheritance.ttf"
+    >
+      {title}
+    </Text>
+  );
+};
 
 export default FattyTitle

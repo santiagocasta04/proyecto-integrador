@@ -7,7 +7,7 @@
 }
 
 .fatty-title {
-  color: cyan;                       /* texto en cyan */
+  color: rgb(2, 50, 50);                       /* texto en cyan */
   font-size: 4rem;
   font-family: 'Arial Black', sans-serif;
   text-transform: uppercase;
@@ -15,9 +15,9 @@
 
   /* sombras de neón para reforzar el cyan */
   text-shadow:
-    0 0 5px rgba(0, 255, 255, 0.8),
-    0 0 10px rgba(0, 255, 255, 0.6),
-    0 0 20px rgba(0, 255, 255, 0.4);
+    0 0 5px rgba(1, 21, 21, 0.8),
+    0 0 10px rgba(3, 52, 52, 0.6),
+    0 0 20px rgba(3, 65, 65, 0.4);
 
   /* rotación 3D ligera y transición suave */
   transform: rotateX(15deg) rotateY(-15deg);
@@ -28,7 +28,17 @@
 .title-wrapper:hover .fatty-title {
   transform: rotateX(0deg) rotateY(0deg);
   text-shadow:
-    0 0 8px rgba(0, 255, 255, 1),
-    0 0 16px rgba(0, 255, 255, 0.8),
-    0 0 32px rgba(0, 255, 255, 0.6);
+    0 0 8px rgb(2, 38, 38),
+    0 0 16px rgba(2, 42, 42, 0.8),
+    0 0 32px rgba(3, 47, 47, 0.6);
 }
+
+.title h1{
+    text-shadow: 
+    0 0 4px antiquewhite,
+    0 0 8px antiquewhite,
+    0 0 16px antiquewhite;
+    font-size: x-large;
+    background-color: transparent;
+}
+

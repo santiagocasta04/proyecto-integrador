@@ -5,6 +5,8 @@ import "./liverCirrhosis.css";
 import Title from "../texts/Title";
 import Staging from "../home/staging/Staging";
 import Person from "../../modelos-3d/Person";
+import { Link } from "react-router-dom";
+
 
 function LiverCirrhosisModel() {
   const { scene } = useGLTF("/models/liver-cancer.glb");
@@ -333,6 +335,11 @@ export default function LiverCirrhosisSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="contenedor-links">
+      <Link to="/higadograso" className="btn-anterior">Anterior enfermedad</Link>
+      <Link to="/hepatitis-alcohólica" className="btn-anterior">Siguiente enfermedad</Link>
       </div>
     </div>
   );

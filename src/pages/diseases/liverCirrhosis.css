@@ -166,4 +166,35 @@
   transition: transform 0.3s ease;
 }
 
+.contenedor-links {
+  display: flex;
+  justify-content: flex-end; /* o "flex-end" o "space-between", según tu diseño */
+  gap: 1310px; /* espacio entre botones */
+  margin-top: 40px;
+}
+
+.btn-anterior {
+  display: block;               /* hace que use toda la línea */
+  width: 100%; 
+  display: inline-block;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #5A2634;
+  color: #ffe1ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1; 
+  text-decoration: none;
+  text-align: center;           /* centra el texto dentro del botón */
+  box-sizing: border-box; 
+}
+
+.btn-anterior:hover {
+  background-color: #da7f99;
+}
+
 

@@ -1,7 +1,9 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import "./fattyLiver.css";
+import "./EHA.css";
+import { Link } from "react-router-dom";
+
 
 // Modelo 3D cargado y rotando
 function EhaModel() {
@@ -88,6 +90,7 @@ export default function EhaSection() {
             </Canvas>
         </div>
         </div>
+        <Link to="/cirrosishepatica" className="btn-anteriorEHA">Anterior enfermedad</Link>
     </div>
   );
 }

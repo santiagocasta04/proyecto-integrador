@@ -41,6 +41,8 @@ export default function WelcomeSection() {
       </p>Pero no te preocupes, con el cuidado y tratamiento necesario tendras un higado sano y feliz</p>
       <br></br>
       <Link to="/enfermedades" className="nav-link"><button>Explorar</button></Link>
+      <Link to="/mapa" className="btn-mapa"><button>Mapa del sitio</button></Link>
     </div>
+    
   );
 }

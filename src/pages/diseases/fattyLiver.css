@@ -10,8 +10,33 @@ seccion-principal {
   height: 100vh; /* Toda la altura visible del navegador */
 }
 
+.texto-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.toggle-title {
+  font-family: "Segoe UI", "Roboto", "Helvetica", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  border-bottom: 2px solid #ccc;
+  background-color: #fff;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+
 /* Contenedor común para ambos artículos */
-.articulo, .articulo1, .articulo2{
+.articulo, .articulo1, .articulo2, .articulo3{
   width: 100%;
   background-color: #fff;
   padding: 1rem;
@@ -27,7 +52,7 @@ seccion-principal {
 }
 
 /* Estilo de los encabezados de ambos artículos (botones) */
-.articulo h1, .articulo1 h1, .articulo2 h1 {
+.articulo h1, .articulo1 h1, .articulo2 h1, .articulo3 h1 {
   margin: 0;
   background: #f4f4f4;
   padding: 1.2rem;
@@ -41,14 +66,14 @@ seccion-principal {
 }
 
 /* Artículos con texto */
-.articulo article, .articulo1 article, .articulo2 article {
+.articulo article, .articulo1 article, .articulo2 article, .articulo3 article {
   padding: 20px;
   font-family: Georgia, serif;
   border-radius: 8px;
   background-color: #fff; /* Fondo blanco para los artículos */
 }
 
-.articulo p, .articulo1 p, .articulo2 p {
+.articulo p, .articulo1 p, .articulo2 p, .articulo3 p {
   margin-bottom: 10px;
   line-height: 1.6;
   text-align: justify;
@@ -107,3 +132,26 @@ seccion-principal {
   display: flex;
   align-items: center;
 }
+
+.btn-explorar {
+  display: inline-block;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #5A2634;
+  color: #ffe1ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1; 
+  text-decoration: none;
+}
+
+.btn-explorar:hover {
+  background-color: #da7f99;
+}
+
+  
+
