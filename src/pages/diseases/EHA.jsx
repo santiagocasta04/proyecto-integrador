@@ -1,7 +1,8 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import "./fattyLiver.css";
+import "./EHA.css";
+import "./fattyLiver.css"
 import { Link } from "react-router-dom";
 
 
