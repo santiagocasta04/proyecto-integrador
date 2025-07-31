@@ -6,7 +6,7 @@ import Personfatigue from "../../modelos-3d/Personfatigue.jsx";
 import Personfight from "../../modelos-3d/Personfight.jsx";
 import "./fattyLiver.css";
 import Stagingfatty from "../home/staging/Stagingfatty.jsx";
-import StagingDrink from "../home/staging/StagingDrink.jsx";
+import StagingDrink from "../home/staging/Stagingdrink.jsx";
 import FattyTitle from "../texts/Fattytitle.jsx";
 import DrinkTitle from "../texts/Drinktitle.jsx";
 import StagingFatigue from "../home/staging/stanfatigue.jsx";
