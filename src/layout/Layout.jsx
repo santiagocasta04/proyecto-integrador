@@ -9,6 +9,7 @@ import WelcomeSection from "../pages/home/WelcomeSection";
 import FattyLiverSection from "../pages/diseases/fattyLiver."
 import LiverCirrhosisSection from "../pages/diseases/liverCirrhosis"
 import EhaSection from "../pages/diseases/EHA";
+import Login from "../pages/Login";
 import { Routes, Route } from "react-router-dom";
 import MapaSection from "../pages/home/mapa";
 
@@ -26,6 +27,7 @@ const Layout = () => {
           <Route path="/enfermedades" element={<Diseases />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/sobre-nosotros" element={<AboutUs />} />
+          <Route path="/registrarse" element={<Login />} /> 
           <Route path="/higadograso" element={<FattyLiverSection/>} />
           <Route path="/cirrosishepatica" element={<LiverCirrhosisSection/>} />
           <Route path="/hepatitis-alcohólica" element={<EhaSection/>} />
