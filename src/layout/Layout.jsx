@@ -6,7 +6,7 @@ import Diseases from "../pages/diseases/Diseases";
 import Quiz from "../pages/Quiz";
 import AboutUs from "../pages/AboutUs";
 import WelcomeSection from "../pages/home/WelcomeSection";
-import FattyLiverSection from "../pages/diseases/fattyLiver."
+import FattyLiverSection from "../pages/diseases/fattyLiver"
 import LiverCirrhosisSection from "../pages/diseases/liverCirrhosis"
 import EhaSection from "../pages/diseases/EHA";
 import Login from "../pages/Login";
