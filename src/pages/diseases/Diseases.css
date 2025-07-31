@@ -7,8 +7,3 @@ button {
     border-radius: 5px;
     cursor: pointer;
   }
-  
-  button:hover {
-    background-color: #005fa3;
-  }
-  

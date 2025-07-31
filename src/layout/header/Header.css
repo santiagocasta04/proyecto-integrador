@@ -29,9 +29,18 @@ a{
 nav a{
     font-weight: 600;
     padding-right: 10px;
-    font-size: 20px;
+    font-size: 20px;;
 }
 
 nav a:hover{
-    color: black;
+    color: #ffe1ea;
+}
+
+
+.logo-name {
+  margin-left: 12px; 
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  color: #ffffff; 
+  text-decoration: none;
 }

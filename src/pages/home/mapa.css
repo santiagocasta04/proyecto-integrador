@@ -1,0 +1,72 @@
+#mapa-del-sitio {
+  background-color: #f8f8f8;
+  padding: 200px 20px;
+  border-top: 10px solid #5A2634;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+#mapa-del-sitio h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #5A2634;
+  border-bottom: 2px solid #ccc;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+#mapa-del-sitio nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#mapa-del-sitio nav ul > li {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+#mapa-del-sitio nav ul li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#mapa-del-sitio nav ul li a:hover {
+  background-color: #5A2634;
+  color: #fff;
+}
+
+/* Submenú */
+.subenlaces {
+    max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  list-style: none;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+#mapa-del-sitio nav ul li:hover > .subenlaces {
+  max-height: 500px; /* suficiente espacio para los items */
+  opacity: 1;
+}
+
+.subenlaces li a {
+  font-size: 0.95rem;
+  
+  padding: 6px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+.subenlaces li a:hover {
+  background-color: #5A2634;
+  color: #fff;
+}
