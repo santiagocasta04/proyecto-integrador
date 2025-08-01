@@ -10,6 +10,7 @@ import StagingDrink from "../home/staging/Stagingdrink.jsx";
 import FattyTitle from "../texts/Fattytitle.jsx";
 import DrinkTitle from "../texts/Drinktitle.jsx";
 import StagingFatigue from "../home/staging/stanfatigue.jsx";
+import StagingFight from "../home/staging/Stagingfight.jsx";
 import { Link } from "react-router-dom";
 
 import { div } from "three/tsl";
@@ -95,7 +96,7 @@ export default function FattyLiverSection() {
               color={"white"}
               position={[4, 2, -2]}
               distance={10}
-              intensity={40} 
+              intensity={200} 
               angle={Math.PI / 9.5}
               penumbra={0.8} 
               castShadow
@@ -227,6 +228,7 @@ export default function FattyLiverSection() {
                   <shadowMaterial opacity={0.4} />
                   <meshStandardMaterial roughness={0.8} metalness={0.5} color="#103641ff"/>
                 </mesh>
+                <DrinkTitle title="Las consecuencias del higado graso se pueden ver tanto a corto como a largo plazo" color="#211502ff" mode="text2d3"/>
               </Canvas>
             </div> 
       </div>
@@ -260,30 +262,33 @@ export default function FattyLiverSection() {
           </article>  
           <div className="model-viewer">
               <Canvas shadows style={{ background: "transparent" }}>
-                <PerspectiveCamera makeDefault fov={70} position={[0, 1, 3]} />
+                <PerspectiveCamera makeDefault fov={70} position={[0, 2, 4]} />
                 <spotLight
                   ref={spotLightRef}
-                  position={[0, 3, 0]}
-                  distance={6}
-                  intensity={10}
-                  angle={Math.PI / 3}
-                  penumbra={0.001}
+                  position={[-1, 3.3, 0]}
+                  distance={7}
+                  intensity={90}
+                  angle={Math.PI / 3.9}
+                  penumbra={0}
+                  shadow-bias={-0.0001}
+                  shadow-mapSize-width={600} // Menor resolución = sombra más marcada
+                  shadow-mapSize-height={600}
                   castShadow
                 />
-                <ambientLight intensity={0.5} />
+                <ambientLight intensity={0} />
                 
-
+                <StagingFight/>
                 <Suspense fallback={null}>
                 <Personfight/>
                 </Suspense>
                 
                 <OrbitControls enableZoom={false} enableRotate={false} maxDistance={5} />
                 <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow castShadow position={[0, 0, 0] }>  
-                 <circleGeometry args={[8, 64]} />
+                 <circleGeometry args={[4, 64]} />
                   <shadowMaterial opacity={0.3} />
-                  <meshStandardMaterial roughness={0.8} metalness={0.5} color="#6c8a92ff"/>
+                  <meshStandardMaterial roughness={0.8} metalness={0.5} color="#fcc4beff"/>
                 </mesh>
-                <FattyTitle title="Deporte" />
+                <DrinkTitle title="Deporte" mode="text3d" />
               </Canvas>
             </div> 
       </div>
