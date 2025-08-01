@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 function TiredPersonModel() {
   const { scene } = useGLTF("/models/liver-cancer.glb");
   const modelRef = useRef();
-
-  // Rotación continua
   useFrame(() => {
     if (modelRef.current) {
       modelRef.current.rotation.y += 0.005; 
@@ -41,6 +39,6 @@ export default function WelcomeSection() {
       </p>Pero no te preocupes, con el cuidado y tratamiento necesario tendras un higado sano y feliz</p>
       <br></br>
       <Link to="/enfermedades" className="nav-link"><button>Explorar</button></Link>
-    </div>
+    </div>   
   );
 }

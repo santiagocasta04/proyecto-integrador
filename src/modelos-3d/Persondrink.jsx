@@ -67,12 +67,16 @@ export default function Persondrink(props) {
                     <group name="Object_85" position={[-0.001, 92.271, -0.196]} />
                     <skinnedMesh
                       name="Object_86"
+                      castShadow
+                      receiveShadow
                       geometry={nodes.Object_86.geometry}
                       material={materials['hatmetall.002']}
                       skeleton={nodes.Object_86.skeleton}
                     />
                     <skinnedMesh
                       name="Object_87"
+                      castShadow
+                      receiveShadow
                       geometry={nodes.Object_87.geometry}
                       material={materials['hatmetall.002']}
                       skeleton={nodes.Object_87.skeleton}

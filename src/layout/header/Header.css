@@ -35,3 +35,12 @@ nav a{
 nav a:hover{
     color: #ffe1ea;
 }
+
+
+.logo-name {
+  margin-left: 12px; 
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  color: #ffffff; 
+  text-decoration: none;
+}

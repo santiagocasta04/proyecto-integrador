@@ -25,4 +25,10 @@
     background-color: #da7f99;
   }
   
+  .btn-mapa {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 40px;
+}
+
   
