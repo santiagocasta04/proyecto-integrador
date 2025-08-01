@@ -14,9 +14,19 @@ import {
 } from "@react-three/drei";
 import { useNavigate } from "react-router";
 import useAuthStore from "../stores/use-auth-store";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { CuboidCollider, Physics, RigidBody } from "@react-three/rapier";
+import Capsule from "./Capsule";
+import * as THREE from "three";
 
-function LiverCirrhosisModel() {
+const QUESTIONS = [
+  { question: "¿Cuál modelo representa un hígado graso?", correct: "fatty" },
+  { question: "¿Cuál modelo representa un hígado con cirrosis?", correct: "cirrhosis" },
+  { question: "¿Cuál modelo representa un hígado básico?", correct: "liver" },
+  { question: "¿Cuál modelo parece más dañado por enfermedad?", correct: "cirrhosis" },
+  { question: "¿Cuál modelo sería el ideal en una persona sana?", correct: "fatty" },
+];
+
+function LiverCirrhosisModel({ position }) {
   const { scene } = useGLTF("/models/liver-cancer.glb");
   const modelRef = useRef();
 
@@ -38,16 +48,19 @@ function LiverCirrhosisModel() {
   });
 
   return (
-    <RigidBody type="fixed" >
-    <primitive ref={modelRef} object={scene} scale={6} position={[-2, 1, 0]} />
+    <RigidBody type="fixed" colliders={false} name="cirrhosis">
+      <primitive ref={modelRef} object={scene} scale={6} position={position} />
+      <CuboidCollider
+        args={[0.5, 0.7, 0.5]}
+        position={[position[0], position[1] + 0.3, position[2]]}
+      />
     </RigidBody>
   );
 }
 
-function LiverModel() {
+function LiverModel({ position }) {
   const { scene } = useGLTF("/models/Liver.glb");
   const modelRef = useRef();
-  const [isAnimating, setIsAnimating] = useState(true);
 
   useEffect(() => {
     if (scene) {
@@ -60,37 +73,27 @@ function LiverModel() {
     }
   }, [scene]);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key.toLowerCase() === "d") {
-        setIsAnimating((prev) => !prev);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
   useFrame((state) => {
-    if (!isAnimating || !modelRef.current) return;
     const t = state.clock.getElapsedTime();
-    modelRef.current.rotation.y += 0.005;
-    modelRef.current.position.y = 1 + Math.sin(t) * 0.2;
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.005;
+      modelRef.current.position.y = position[1] + Math.sin(t) * 0.2;
+    }
   });
 
   return (
-   <RigidBody type="fixed">
-     <primitive
-      ref={modelRef}
-      object={scene}
-      scale={1}
-      position={[1.5, 1, 0]}
-    />
-   </RigidBody>
+    <RigidBody type="fixed" colliders={false} name="liver">
+      <primitive ref={modelRef} object={scene} scale={1} position={position} />
+      <CuboidCollider
+        args={[0.8, 0.7, 0.8]}
+        position={[position[0], position[1] + 0.5, position[2]]}
+      />
+    </RigidBody>
   );
 }
 
-function HealthyLiverModel() {
-  const { scene } = useGLTF("/models/healty-liver.glb");
+function FattyLiverModel({ position }) {
+  const { scene } = useGLTF("/models/LiverFatty1.glb");
   const modelRef = useRef();
 
   useEffect(() => {
@@ -111,24 +114,65 @@ function HealthyLiverModel() {
   });
 
   return (
-    <RigidBody type="fixed">
-      <primitive
-      ref={modelRef}
-      object={scene}
-      scale={5}
-      position={[-0.5, 1, 0]}
-    />
-    </RigidBody> 
+    <RigidBody type="fixed" colliders={false} name="fatty">
+      <primitive ref={modelRef} object={scene} scale={5} position={position} />
+      <CuboidCollider
+        args={[0.5, 0.5, 0.5]}
+        position={[position[0], position[1] + 0.3, position[2]]}
+      />
+    </RigidBody>
   );
+}
+
+const MODEL_COMPONENTS = [
+  { key: "fatty", Component: FattyLiverModel },
+  { key: "cirrhosis", Component: LiverCirrhosisModel },
+  { key: "liver", Component: LiverModel },
+];
+
+function shuffleArray(array) {
+  return [...array].sort(() => Math.random() - 0.5);
 }
 
 const Quiz = () => {
   const { userLooged, loginGoogleWithPopUp } = useAuthStore();
   const navigate = useNavigate();
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [shuffledModels, setShuffledModels] = useState([]);
+  const capsuleRef = useRef();
+
+  useEffect(() => {
+    if (userLooged) {
+      setShuffledModels(shuffleArray(MODEL_COMPONENTS));
+    }
+  }, [questionIndex, userLooged]);
 
   const handleLogin = useCallback(() => {
     loginGoogleWithPopUp().catch(() => navigate("/"));
   }, [loginGoogleWithPopUp, navigate]);
+
+  const handleCollision = (name) => {
+    if (name === QUESTIONS[questionIndex].correct) {
+      setScore((prev) => prev + 1);
+    }
+    if (questionIndex < QUESTIONS.length - 1) {
+      setQuestionIndex((prev) => prev + 1);
+    } else {
+      alert(`Quiz finalizado. Tu puntuación es: ${score + 1}/5`);
+      setQuestionIndex(0);
+      setScore(0);
+    }
+    setTimeout(() => {
+      capsuleRef.current?.resetPosition();
+    }, 1000);
+  };
+
+  const positions = [
+    [-2, 1, 0],
+    [0, 1, 0],
+    [2, 1, 0],
+  ];
 
   return (
     <>
@@ -154,17 +198,62 @@ const Quiz = () => {
           <h2 style={{ textAlign: "center" }}>
             Bienvenido al Quiz, {userLooged.displayName}
           </h2>
+          <h3 style={{ textAlign: "center" }}>
+            {QUESTIONS[questionIndex].question}
+          </h3>
+          <div style={{ height: "10px", background: "#ddd", margin: "10px" }}>
+            <div
+              style={{
+                height: "100%",
+                width: `${(questionIndex / QUESTIONS.length) * 100}%`,
+                background: "green",
+                transition: "width 0.5s",
+              }}
+            ></div>
+          </div>
           <Canvas shadows>
             <Suspense fallback={null}>
-              <PerspectiveCamera makeDefault position={[0, 0, 10]} />
-              <Stage environment="city" intensity={1.5} shadows adjustCamera>
+              <PerspectiveCamera makeDefault position={[0, 5, 10]} />
+              <Stage
+                environment="city"
+                intensity={1.5}
+                shadows
+                adjustCamera={false}
+              >
                 <Physics debug>
-                <LiverModel />
-                <LiverCirrhosisModel />
-                <HealthyLiverModel />
+                  <RigidBody type="fixed">
+                    <mesh
+                      rotation={[-Math.PI / 2, 0, 0]}
+                      position={[0, 0, 0]}
+                      receiveShadow
+                    >
+                      <planeGeometry args={[20, 20]} />
+                      <meshStandardMaterial transparent opacity={0} />
+                    </mesh>
+                  </RigidBody>
+
+                  <Capsule ref={capsuleRef} onCollision={handleCollision} />
+
+                  {shuffledModels.map(({ key, Component }, i) => (
+                    <group
+                      key={key}
+                      onClick={() =>
+                        capsuleRef.current?.launchTowards(
+                          new THREE.Vector3(...positions[i])
+                        )
+                      }
+                    >
+                      <Component position={positions[i]} />
+                    </group>
+                  ))}
                 </Physics>
               </Stage>
-              <OrbitControls minDistance={3} maxDistance={15} enableRotate={false} />
+
+              <OrbitControls
+                minDistance={3}
+                maxDistance={15}
+                enableRotate={true}
+              />
             </Suspense>
           </Canvas>
         </div>
