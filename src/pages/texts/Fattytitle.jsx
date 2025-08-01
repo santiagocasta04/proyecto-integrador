@@ -6,7 +6,7 @@ const FattyTitle = ({ title, mode = "text3d", htmlSize = 40, position = [0, 3, 0
   if (mode === "html1") {
     return (
       <Html
-        center
+        
         position={position}
         distanceFactor={5}
         transform
@@ -40,7 +40,7 @@ const FattyTitle = ({ title, mode = "text3d", htmlSize = 40, position = [0, 3, 0
         {title}
         <meshStandardMaterial
           attach="material"
-          color="#043939ff"
+          color="#6f8297ff"
           metalness={0.5}
           roughness={0.1}
           emissive="#00080bff"

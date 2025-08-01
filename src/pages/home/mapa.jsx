@@ -19,7 +19,7 @@ export default function MapaSection() {
 
           <li><a href="/quiz">Quiz interactivo</a></li>
           <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
-          <li><a href="/contacto.html">Iniciar Sesión</a></li>
+          <li><a href="/registrarse">Iniciar Sesión</a></li>
         </ul>
       </nav>
     </section>

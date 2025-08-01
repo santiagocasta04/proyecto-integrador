@@ -10,6 +10,8 @@ import StagingDrink from "../home/staging/Stagingdrink.jsx";
 import FattyTitle from "../texts/Fattytitle.jsx";
 import DrinkTitle from "../texts/Drinktitle.jsx";
 import StagingFatigue from "../home/staging/stanfatigue.jsx";
+import StagingFight from "../home/staging/Stagingfight.jsx";
+import VideoHospital from "../home/videos/Videohospital.jsx";
 import { Link } from "react-router-dom";
 
 import { div } from "three/tsl";
@@ -43,7 +45,7 @@ const Recipent = () =>{
     rotation-x={-Math.PI / 2} 
     receiveShadow={true}
     position={[0, -2, 0]}>
-      <circleGeometry args={[7, 70]} />
+      <circleGeometry args={[5, 70]} />
       <meshStandardMaterial roughness={0.8} metalness={1} />
     </mesh>
   );
@@ -89,13 +91,13 @@ export default function FattyLiverSection() {
               Enfermedad del hígado graso por alcohol, también llamada esteatosis hepática alcohólica</p>  
           </article>
         <div className="model-viewer">
-          <Canvas camera={{ position: [0, 0, 6] }} shadows={true}>
+          <Canvas camera={{ position: [0, 0, 10] }} shadows={true}>
             <SoftShadows samples={20} size={10} focus={0.5} />
             <spotLight
               color={"white"}
               position={[4, 2, -2]}
               distance={10}
-              intensity={40} 
+              intensity={200} 
               angle={Math.PI / 9.5}
               penumbra={0.8} 
               castShadow
@@ -112,12 +114,14 @@ export default function FattyLiverSection() {
               shadowBias={-0.0005}
             />
             <Recipent />
-            <Stagingfatty/>  
+            <Stagingfatty/>
+            <VideoHospital/>  
             <Suspense fallback={null}>
               <LiverFattyModel />
               <OrbitControls enableZoom={false} />
             </Suspense>
-            <FattyTitle title="Higado graso"/>
+            <FattyTitle title="Higado graso" mode ="text3d" position={[0, 3.5, 0]}/>
+            <FattyTitle title="Interactua con el modelo 3d" mode = "html1" position={[0, -2.8, 0]} htmlSize={30}/>
           </Canvas>
           </div>
         </div>
@@ -150,12 +154,12 @@ export default function FattyLiverSection() {
               <Canvas shadows style={{ background: "transparent" }}>
                 <PerspectiveCamera makeDefault fov={70} position={[0, 1.8, 2.9]} />
                 <spotLight
-                  position={[0.001, 2.9, -2.8]} // ↖️ Desde la izquierda y un poco arriba
+                  position={[0.001, 2.9, -2.8]} 
                   intensity={15}
                   castShadow
                   shadow-mapSize-width={2024}
                   shadow-mapSize-height={2024}
-                  shadow-bias={0} // 🔄 reduce artefactos de sombr
+                  shadow-bias={0} 
                 />
                 <ambientLight intensity={0.01} />
                 
@@ -206,13 +210,13 @@ export default function FattyLiverSection() {
                 <PerspectiveCamera makeDefault fov={70} position={[0, 2, 4]} />
                 <spotLight
                   ref={spotLightRef}
-                  position={[0, 5, 5]} // Más alto
+                  position={[0, 5, 5]} 
                   intensity={90}
                   angle={Math.PI / 10}
                   castShadow
-                  penumbra={0} // Sombra dura
+                  penumbra={0} 
                   shadow-bias={-0.0001}
-                  shadow-mapSize-width={600} // Menor resolución = sombra más marcada
+                  shadow-mapSize-width={600} 
                   shadow-mapSize-height={600}
                 />
                 <ambientLight intensity={0.2} />
@@ -227,6 +231,8 @@ export default function FattyLiverSection() {
                   <shadowMaterial opacity={0.4} />
                   <meshStandardMaterial roughness={0.8} metalness={0.5} color="#103641ff"/>
                 </mesh>
+                <DrinkTitle title= "Presiona c para interactuar con el sonido" mode="html1" position = {[0, -3, 0]}/>
+                <DrinkTitle title="Las consecuencias del higado graso se pueden ver tanto a corto como a largo plazo" color="#211502ff" mode="text2d3"/>
               </Canvas>
             </div> 
       </div>
@@ -260,30 +266,34 @@ export default function FattyLiverSection() {
           </article>  
           <div className="model-viewer">
               <Canvas shadows style={{ background: "transparent" }}>
-                <PerspectiveCamera makeDefault fov={70} position={[0, 1, 3]} />
+                <PerspectiveCamera makeDefault fov={70} position={[0, 2, 4]} />
                 <spotLight
                   ref={spotLightRef}
-                  position={[0, 3, 0]}
-                  distance={6}
-                  intensity={10}
-                  angle={Math.PI / 3}
-                  penumbra={0.001}
+                  position={[-1, 3.3, 0]}
+                  distance={7}
+                  intensity={90}
+                  angle={Math.PI / 3.9}
+                  penumbra={0}
+                  shadow-bias={-0.0001}
+                  shadow-mapSize-width={600} 
+                  shadow-mapSize-height={600}
                   castShadow
                 />
-                <ambientLight intensity={0.5} />
+                <ambientLight intensity={0} />
                 
-
+                <StagingFight/>
                 <Suspense fallback={null}>
                 <Personfight/>
                 </Suspense>
                 
                 <OrbitControls enableZoom={false} enableRotate={false} maxDistance={5} />
                 <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow castShadow position={[0, 0, 0] }>  
-                 <circleGeometry args={[8, 64]} />
+                 <circleGeometry args={[4, 64]} />
                   <shadowMaterial opacity={0.3} />
-                  <meshStandardMaterial roughness={0.8} metalness={0.5} color="#6c8a92ff"/>
+                  <meshStandardMaterial roughness={0.8} metalness={0.5} color="#fcc4beff"/>
                 </mesh>
-                <FattyTitle title="Deporte" />
+                <DrinkTitle title="haz click sobre el modelo para interactuar" mode="html1" position={[0, -3, 0]} /> 
+                <DrinkTitle title="Deporte" mode="text3d" />
               </Canvas>
             </div> 
       </div>

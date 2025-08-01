@@ -9,7 +9,7 @@ const DrinkTitle = ({
   fontSize = 0.4,
   position = [0, 2, 0]
 }) => {
-  // Modo HTML (fuera del canvas)
+ 
   if (mode === "html1") {
     return (
       <Html
@@ -24,7 +24,6 @@ const DrinkTitle = ({
     );
   }
 
-  // Modo texto 3D extruido
   if (mode === "text3d") {
     return (
       <Center position={position}>
@@ -59,7 +58,7 @@ const DrinkTitle = ({
     );
   }
 
-  // ✅ Modo texto 2D plano en canvas
+
   if (mode === "text2d") {
     return (
       <Text
@@ -96,6 +95,24 @@ const DrinkTitle = ({
     );
   }
 
+  if(mode === "text2d3"){
+    return (
+      <Text
+        position={[0, 2, 0]}
+        color="#5e4434ff"
+        anchorX="center"
+        anchorY="middle"
+        fontSize={fontSize}
+        font="/fonts/Inheritance.ttf"
+        maxWidth={10}
+        lineHeight={1}
+        textAlign='center'
+        scale={0.6}
+      >
+        {title}
+      </Text>
+    );
+  }
   return null;
 };
 

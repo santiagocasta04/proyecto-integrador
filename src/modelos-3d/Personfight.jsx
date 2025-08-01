@@ -9,7 +9,20 @@ export default function PersonFight(props) {
   const { actions } = useAnimations(animations, group)
 
   const [hasPlayed, setHasPlayed] = useState(false)
+   useEffect(() => {
+      const listener = new AudioListener()
+      const sound = new PositionalAudio(listener)
+      const loader = new AudioLoader()
   
+      loader.load('/sounds/soundfight.wav', (buffer) => {
+        sound.setBuffer(buffer)
+        sound.setRefDistance(2)
+        sound.setVolume(1)
+        soundRef.current = sound
+        group.current?.add(sound)
+      })
+    }, [])
+
   useEffect(() => {
       const idleAction = actions["Fight"]
       if (idleAction && !hasPlayed) {
@@ -17,16 +30,6 @@ export default function PersonFight(props) {
         idleAction.paused = true
       }
     }, [actions, hasPlayed])
-
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-          if (e.key.toLowerCase() === 'f' && soundRef.current && !soundRef.current.isPlaying) {
-            soundRef.current.play()
-          }
-        }
-        window.addEventListener('keydown', handleKeyDown)
-        return () => window.removeEventListener('keydown', handleKeyDown)
-      }, [])
 
       useEffect(() => {
           const idleAction = actions["Scene"]
@@ -39,9 +42,16 @@ export default function PersonFight(props) {
         const handlePerson = useCallback(() => {
             const anim1 = actions["Fight"]
         
-            if (anim1) anim1.reset().fadeIn(0.2).play()
-        
-            setHasPlayed(true)
+            if (anim1) {
+            anim1.reset().fadeIn(0.2).play()
+            anim1.paused = false // asegúrate de que no esté pausada
+          }
+
+          if (soundRef.current && !soundRef.current.isPlaying) {
+            soundRef.current.play()
+          }
+
+           setHasPlayed(true)
           }, [actions])
 
    return (
@@ -85,6 +95,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_11.geometry}
                     material={materials.Material_32}
                     skeleton={nodes.Object_11.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_12" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -92,6 +104,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_13.geometry}
                     material={materials.Material_31}
                     skeleton={nodes.Object_13.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_14" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -99,6 +113,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_15.geometry}
                     material={materials.Material_33}
                     skeleton={nodes.Object_15.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_16" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -106,6 +122,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_17.geometry}
                     material={materials.Material_35}
                     skeleton={nodes.Object_17.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_18" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -113,6 +131,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_19.geometry}
                     material={materials.Material_37}
                     skeleton={nodes.Object_19.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_20" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -120,6 +140,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_21.geometry}
                     material={materials.Material_36}
                     skeleton={nodes.Object_21.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_22" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -127,6 +149,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_23.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_23.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_24" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -134,6 +158,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_25.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_25.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_26" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -141,6 +167,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_27.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_27.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_28" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -148,6 +176,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_29.geometry}
                     material={materials.Material_29}
                     skeleton={nodes.Object_29.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_30" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -155,6 +185,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_31.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_31.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_32" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -162,6 +194,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_33.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_33.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_34" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -169,6 +203,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_35.geometry}
                     material={materials.material_0}
                     skeleton={nodes.Object_35.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_36" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -176,6 +212,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_37.geometry}
                     material={materials.Material_30}
                     skeleton={nodes.Object_37.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_38" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -183,6 +221,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_39.geometry}
                     material={materials.Material_34}
                     skeleton={nodes.Object_39.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_40" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -190,6 +230,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_41.geometry}
                     material={materials.Material_45}
                     skeleton={nodes.Object_41.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_42" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -197,6 +239,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_43.geometry}
                     material={materials.Material_44}
                     skeleton={nodes.Object_43.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_44" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -204,6 +248,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_45.geometry}
                     material={materials.Material_43}
                     skeleton={nodes.Object_45.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_6" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -211,6 +257,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_7.geometry}
                     material={materials.Material_26}
                     skeleton={nodes.Object_7.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="Object_8" position={[0.966, 0, -0.944]} />
                   <skinnedMesh
@@ -218,6 +266,8 @@ export default function PersonFight(props) {
                     geometry={nodes.Object_9.geometry}
                     material={materials.Material_25}
                     skeleton={nodes.Object_9.skeleton}
+                    castShadow
+                    receiveShadow
                   />
                   <group name="������" rotation={[-Math.PI / 2, 0, 0]} />
                   <group name="���������" rotation={[-Math.PI / 2, 0, 0]} />
