@@ -6,6 +6,7 @@ import Title from "../texts/Title";
 import Staging from "../home/staging/Staging";
 import Person from "../../modelos-3d/Person";
 import StagingFatty from "../home/staging/Stagingfatty";
+import VideoHospital from "../home/videos/Videohospital.jsx";
 
 import { Link } from "react-router-dom";
 
@@ -187,6 +188,7 @@ export default function LiverCirrhosisSection() {
                   shadow-mapSize-height={1024}
                 />
                 <StagingFatty />
+                <VideoHospital/>
                 <Suspense fallback={null}>
                   <LiverCirrhosisModel />
                 </Suspense>

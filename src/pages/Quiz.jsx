@@ -196,7 +196,9 @@ const Quiz = () => {
       ) : (
         <div style={{ height: "calc(100vh - 60px)", width: "100%" }}>
           <h2 style={{ textAlign: "center" }}>
-            Bienvenido al Quiz, {userLooged.displayName}
+            Bienvenido al Quiz, {userLooged.displayName}<p>
+              </p> 
+            Haz click en la opcion que consideras correcta
           </h2>
           <h3 style={{ textAlign: "center" }}>
             {QUESTIONS[questionIndex].question}
@@ -220,7 +222,7 @@ const Quiz = () => {
                 shadows
                 adjustCamera={false}
               >
-                <Physics debug>
+                <Physics >
                   <RigidBody type="fixed">
                     <mesh
                       rotation={[-Math.PI / 2, 0, 0]}

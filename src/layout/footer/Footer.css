@@ -33,3 +33,12 @@
 .footer-left:hover {
   text-decoration: underline;
 }
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right .copyright {
+  font-size: 14px;
+  color: white;
+}
