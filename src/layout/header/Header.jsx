@@ -14,7 +14,7 @@ const Header = () => {
         <Link to="/enfermedades" className="nav-link">Enfermedades</Link>
         <Link to="/quiz" className="nav-link">Quiz interactivo</Link>
         <Link to="/sobre-nosotros" className="nav-link">Sobre nosotros</Link>
-        <Link to="/registrarse" className="nav-link">Registrarse</Link>
+        <Link to="/registrarse" className="nav-link">Iniciar sesion</Link>
       </nav>
     </header>
   );

@@ -1,0 +1,19 @@
+.btn-anteriorEHA {
+  display: inline-block;
+  position: relative;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: 1400px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #5A2634;
+  color: #ffe1ea;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-anteriorEHA:hover {
+  background-color: #da7f99;
+}

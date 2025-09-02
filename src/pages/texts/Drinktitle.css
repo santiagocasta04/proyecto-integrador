@@ -1,0 +1,19 @@
+/* Drinktitle.css */
+
+.html-title-wrapper {
+  pointer-events: none;
+}
+
+.html-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  color: rgb(24, 16, 2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
